@@ -1,0 +1,214 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+
+    --radius: 0.5rem;
+
+    /*---orange-colors------------------------------*/
+    --orange-50: 19, 100%, 95%, 1;
+    --orange-400: 19, 97%, 61%, 1;
+    --orange-500: 19, 97%, 51%, 1;
+    /*---blue-colors--------------------------------*/
+    --blue-500: 217, 100%, 61%, 1;
+    --blue-600: 217, 80%, 56%, 1;
+    /*---white-colors-------------------------------*/
+    --white-500: 0, 0%, 100%, 1;
+    /*---black-colors-------------------------------*/
+    --black-100: 0, 0%, 69%, 1;
+    --black-200: 0, 0%, 54%, 1;
+    --black-300: 0, 0%, 33%, 1;
+    --black-400: 0, 0%, 20%, 1;
+    /*---gray-colors-------------------------------*/
+    --gray-100: 0, 0%, 97%, 1;
+    --gray-200: 0, 0%, 96%, 1;
+    --gray-800: 0, 0%, 50%, 1;
+  }
+
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  /*---default-btn-shadow-------------------*/
+  .main-shadow {
+    box-shadow: 2px 0px 10px 4px hsl(var(--main-shadow-color));
+  }
+
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-none {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .transition-mask-shadow {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+  .default-mask-shadow {
+    box-shadow: 2px -1px 0px -1px hsl(var(--orange-400)),
+      -2px 1px 0px -1px hsl(var(--orange-400));
+  }
+  .default-mask-shadow:hover {
+    box-shadow: 2px -1px 0px -1px hsl(var(--orange-500)),
+      -2px 1px 0px -1px hsl(var(--orange-500));
+  }
+
+  .dark-mask-shadow {
+    box-shadow: 2px -1px 0px -1px hsl(var(--black-300)),
+      -2px 1px 0px -1px hsl(var(--black-300));
+  }
+  .dark-mask-shadow:hover {
+    box-shadow: 2px -1px 0px -1px hsl(var(--black-400)),
+      -2px 1px 0px -1px hsl(var(--black-400));
+  }
+
+  .secondary-mask-shadow {
+    box-shadow: 2px -1px 0px -1px hsl(var(--blue-500)),
+      -2px 1px 0px -1px hsl(var(--blue-500));
+  }
+  .secondary-mask-shadow:hover {
+    box-shadow: 2px -1px 0px -1px hsl(var(--blue-600)),
+      -2px 1px 0px -1px hsl(var(--blue-600));
+  }
+
+  .ghost-mask-shadow {
+    box-shadow: 2px -1px 0px -1px hsl(var(--orange-50)),
+      -2px 1px 0px -1px hsl(var(--orange-50));
+  }
+  .ghost-mask-shadow:hover {
+    box-shadow: 2px -1px 0px -1px hsl(var(--orange-400)),
+      -2px 1px 0px -1px hsl(var(--orange-400));
+  }
+
+  /*---clip-shape---------------------------*/
+  .clip-shape::after {
+    content: "";
+    position: absolute;
+    clip-path: polygon(100% 0, 0 0, 0 100%);
+  }
+  .clip-shape::before {
+    content: "";
+    position: absolute;
+    clip-path: polygon(100% 0, 100% 100%, 0 100%);
+  }
+  /*---default-clip-shape---------------------------*/
+  .default-clip-shape {
+    margin-inline-start: 1.25rem;
+    margin-inline-end: 1.25rem;
+  }
+  .default-clip-shape::after {
+    height: 3rem;
+    width: 1.25rem;
+    right: -1.25rem;
+  }
+  .default-clip-shape::before {
+    height: 3rem;
+    width: 1.25rem;
+    left: -1.25rem;
+  }
+
+  /*---lg-clip-shape---------------------------*/
+  .lg-clip-shape {
+    margin-inline-start: 1.4585rem;
+    margin-inline-end: 1.4585rem;
+  }
+  .lg-clip-shape::after {
+    height: 3.5rem;
+    width: 1.4585rem;
+    right: -1.4585rem;
+  }
+  .lg-clip-shape::before {
+    height: 3.5rem;
+    width: 1.4585rem;
+    left: -1.4585rem;
+  }
+
+  /*---sm-clip-shape---------------------------*/
+  .sm-clip-shape {
+    margin-inline-start: 1.04165rem;
+    margin-inline-end: 1.04165rem;
+  }
+  .sm-clip-shape::after {
+    height: 2.5rem;
+    width: 1.04165rem;
+    right: -1.04165rem;
+  }
+  .sm-clip-shape::before {
+    height: 2.5rem;
+    width: 1.04165rem;
+    left: -1.04165rem;
+  }
+}
